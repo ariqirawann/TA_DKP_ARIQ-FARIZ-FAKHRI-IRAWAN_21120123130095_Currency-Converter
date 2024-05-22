@@ -1,10 +1,11 @@
 <?php
 class CurrencyConverter {
-  private $currencies = array("USD", "EUR", "GBP");
+  private $currencies = array("IDR", "USD", "EUR", "GBP");
   private $exchangeRates = array(
-    "USD" => 0.000069,
-    "EUR" => 0.000061,
-    "GBP" => 0.000053
+    "USD" => 14000,
+    "EUR" => 15500,
+    "GBP" => 19000,
+    "IDR" => 1
   );
 
   public function __construct() {
@@ -18,11 +19,13 @@ class CurrencyConverter {
         <div class="container">
           <h1>Currency Converter</h1>
           <form action="result.php" method="get">
-            <label for="amount">Amount in IDR:</label>
+            <label for="amount">Amount:</label>
             <input type="number" id="amount" name="amount"><br><br>
             <label for="fromCurrency">From:</label>
             <select id="fromCurrency" name="fromCurrency">
-              <option value="IDR">IDR</option>
+              <?php foreach ($this->currencies as $currency) {?>
+                <option value="<?php echo $currency;?>"><?php echo $currency;?></option>
+              <?php }?>
             </select><br><br>
             <label for="toCurrency">To:</label>
             <select id="toCurrency" name="toCurrency">
